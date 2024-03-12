@@ -63,24 +63,3 @@ videoList.forEach(vid => {
 });
 
 
-
-async function checkScreenRecording() {
-    try {
-        const stream = await navigator.mediaDevices.getDisplayMedia({ video: true });
-        stream.getTracks().forEach(track => track.stop());
-        return false; // لم يقم بتسجيل الشاشة
-    } catch (error) {
-        return true; // قام بتسجيل الشاشة
-    }
-}
-
-// استخدم الدالة checkScreenRecording للتحقق
-checkScreenRecording().then(isRecording => {
-    if (isRecording) {
-        // إذا كان يقوم بتسجيل الشاشة
-        window.location.href = "https://example.com/redirected-page";
-    } else {
-        // إذا لم يكن يقوم بتسجيل الشاشة
-        alert("يجب تسجيل الدخول أولاً");
-    }
-});
